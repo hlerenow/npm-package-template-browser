@@ -1,2 +1,2 @@
 # npm-package-template-browser
-npm发布包工程模板（Browser）
+npm包发布模板（浏览器端）
