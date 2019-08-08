@@ -18,7 +18,7 @@ module.exports = {
         path: utils.resolve('../dist'),
         filename: '[name].js',
         libraryTarget: 'umd',
-        globalObject: 'this'
+        globalObject: "typeof self !== 'undefined' ? self : this"
     },
     module: {
         rules: [
