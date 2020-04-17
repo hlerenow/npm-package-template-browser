@@ -1,9 +1,8 @@
 // @ts-nocheck
-const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const utils = require('./utils');
-
+var merge = require('webpack-merge');
+var baseConfig = require('./webpack.base');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var utils = require('./utils');
 module.exports = merge(baseConfig, {
     output: {
         path: utils.resolve('../dist')
@@ -15,8 +14,7 @@ module.exports = merge(baseConfig, {
         })
     ]
 });
-
 if (process.env.npm_config_report) {
-    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
     module.exports.plugins.push(new BundleAnalyzerPlugin());
 }

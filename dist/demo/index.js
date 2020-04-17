@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/demo/index.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -105,18 +105,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nfunction b(str) {\n  console.log(str);\n  return 1;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (b);\n\n//# sourceURL=webpack:///./src/demo/index.ts?");
-
-/***/ }),
-
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _demo_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./demo/index */ \"./src/demo/index.ts\");\n\n\nfunction a(str) {\n  console.log(str);\n  return 1;\n}\n\nObject(_demo_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('123');\n/* harmony default export */ __webpack_exports__[\"default\"] = (a);\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ })
 

@@ -1,7 +1,6 @@
 // @ts-nocheck
-const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base');
-
+var merge = require('webpack-merge');
+var baseConfig = require('./webpack.base');
 module.exports = merge(baseConfig, {
     module: {
         rules: [
@@ -12,6 +11,7 @@ module.exports = merge(baseConfig, {
                 query: {
                     plugins: ['istanbul']
                 }
-            }]
+            }
+        ]
     }
 });

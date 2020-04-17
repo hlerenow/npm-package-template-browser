@@ -1,17 +1,15 @@
 // @ts-nocheck
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
-const utils = require('./utils');
-const packager = require(utils.resolve('../package.json'));
-const entries = utils.getEntry(utils.resolve('../src/**/index.ts'));
-const chalk = require('chalk');
-const Log = console.log;
-
+var CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
+var webpack = require('webpack');
+var utils = require('./utils');
+var packager = require(utils.resolve('../package.json'));
+var entries = utils.getEntry(utils.resolve('../src/**/index.ts'));
+var chalk = require('chalk');
+var Log = console.log;
 Log(chalk.hex('#3aca1b').bold('[入口文件]:'));
-Object.keys(entries).forEach(key => {
-    Log(`    ${chalk.red(key)}: ${chalk.green(entries[key])}`);
+Object.keys(entries).forEach(function (key) {
+    Log("    " + chalk.red(key) + ": " + chalk.green(entries[key]));
 });
-
 module.exports = {
     mode: 'development',
     entry: entries,
@@ -42,13 +40,13 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ]
+        extensions: ['.tsx', '.ts', '.js']
     },
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
-                _VERSION_: `"${packager.version}"`
+                _VERSION_: "\"" + packager.version + "\""
             }
         })
     ]
