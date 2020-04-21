@@ -1,55 +1,40 @@
-// @ts-nocheck
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
+const path = require('path');
 const utils = require('./utils');
-const packager = require(utils.resolve('../package.json'));
+const webpack = require('webpack');
+const package = require(utils.resolve('../package.json'));
+// const chalk = require('chalk').default;
+// const Log = console.log;
 const entries = utils.getEntry(utils.resolve('../src/**/index.ts'));
-const chalk = require('chalk');
-const Log = console.log;
 
-Log(chalk.hex('#3aca1b').bold('[入口文件]:'));
-Object.keys(entries).forEach(key => {
-    Log(`    ${chalk.red(key)}: ${chalk.green(entries[key])}`);
-});
+// Object.keys(entries).forEach(key => {
+//   Log(`    ${chalk.red(key)}: ${chalk.green(entries[key])}`);
+// });
 
 module.exports = {
-    mode: 'development',
-    entry: entries,
-    output: {
-        path: utils.resolve('../dist'),
-        filename: '[name].js',
-        libraryTarget: 'umd',
-        globalObject: "typeof self !== 'undefined' ? self : this"
-    },
-    module: {
-        rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
-            },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'eslint-loader'
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            }
-        ]
-    },
-    resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ]
-    },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                _VERSION_: `"${packager.version}"`
-            }
-        })
-    ]
+  mode: 'development',
+  entry: entries,
+  module: {
+    rules: [
+      {
+        test: /\.[t|j]s$/, exclude: /node_modules/, loader: "babel-loader"
+      }
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    filename: '[name].js',
+    libraryTarget: 'umd',
+    globalObject: "typeof self !== 'undefined' ? self : this",
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: './'
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        _VERSION_: `"${package.version}"`
+      }
+    })
+  ]
 };
